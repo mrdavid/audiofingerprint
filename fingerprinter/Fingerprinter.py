@@ -36,7 +36,7 @@ class Fingerprinter(object):
     sample_width = None            # bytes per sample
     resolution = None              # resolution of the frames in seconds, i.e. for every <resolution> seconds there is one sub-fingerprint
     nsamples_between_frames = None # How many samples are there between the first sample two neighboring frames
-    frequency_band_boundary_indices = numpy.zeros(FINGERPRINT_BITS) # Boundaries of the frequency bands used for fingerprint generation
+    frequency_band_boundary_indices = numpy.zeros(FINGERPRINT_NBITS) # Boundaries of the frequency bands used for fingerprint generation
     
     # properties that are not relevant for calculating anything but might be interesting
     index_width_lower_to_upper = None # how many fourier components lie within 300Hz..2000Hz
