@@ -94,7 +94,12 @@ class Fingerprinter(object):
         # the indices that indicate the boundaries between frequency bands
         # we do this once at initialization
         self.frequency_band_boundary_indices = self.calculate_frequency_bands(self.nsamples_per_frame, self.framewidth)
-        
+
+
+    def close(self):
+      self.wavefile.close()
+
+
     # actually calculate all sub-fingerprints
     def init_fingerprints(self):
         # read all bytes from wavefile
