@@ -6,6 +6,7 @@ import numpy
 from warnings import warn
 
 # Based on Kalker, Haitsma - "A Highly Robust Audio Fingerprinting System"
+# Journal of New Music Research, Volume 32, Issue 2, 2003
 # We assume that the amplitudes in wave files are linearly encoded
 
 class Fingerprinter(object):
@@ -137,6 +138,8 @@ class Fingerprinter(object):
             # Keep on going as long as there are enough samples left for a whole frame
         self.wavefile.close();
     
+    
+    
     ########################
     def print_info(self):
         """
@@ -151,6 +154,7 @@ class Fingerprinter(object):
         print "# of fourier components between 300 and 2000 Hz: " + str(self.index_width_lower_to_upper)
         print " * * * * * * * "
         
+    
         
     ##############################
     def calculate_frequency_bands(self, nsamples_per_frame, frame_length):
@@ -195,6 +199,8 @@ class Fingerprinter(object):
         return fingerprint
         #self.frequency_band_boundary_indices
       
+      
+      
     def calculate_band_energies_from_frame(self, frame):
         """
         Calculate the sum of fourier components of a frame, by bands
@@ -204,8 +210,12 @@ class Fingerprinter(object):
             energies[band] = numpy.sum ( numpy.abs( frame[ self.frequency_band_boundary_indices[band] : self.frequency_band_boundary_indices[band+1]  ] ) ** 2 )
         return energies
     
+    
+    
     def binary_distance(self, print1, print2):
         return numpy.sum(numpy.logical_xor(print1, print2))
+    
+    
     
     def block_distance(self, block1, block2):
         if block1.shape != block2.shape:
@@ -214,6 +224,7 @@ class Fingerprinter(object):
         for i in range(len(block1)):
             block_dist += self.binary_distance(block1[i], block2[i])
         return block_dist
+        
         
         
     # Find the best match between this fingerprinter and a given fingerprinter
