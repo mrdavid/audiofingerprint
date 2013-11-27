@@ -187,7 +187,8 @@ class Fingerprinter(object):
         a = float(index_lower_limit)
         b = numpy.log( float(index_upper_limit)/a ) / float(self.FINGERPRINT_NBITS + 1)
         # return indices for the frequency bands
-        return numpy.floor( a * numpy.exp(b * numpy.arange(0,self.FINGERPRINT_NBITS + 2)) )
+        return numpy.round( a * numpy.exp(b * numpy.arange(0,self.FINGERPRINT_NBITS + 2)) )
+        
         
         
     def generate_binary_fingerprint_from_frames(self, frame1, frame2):
