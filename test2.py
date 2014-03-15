@@ -1,4 +1,4 @@
-import fingerprinter
+from fingerprinter.wrapper.Fingerprinter import Fingerprinter
 import pylab
 import numpy
 
@@ -11,9 +11,9 @@ import numpy
 
 print "done"
 
-test2 = fingerprinter.Fingerprinter(filepath="tmp/09TheSuffering.wav", framewidth=0.37, overlap=0.1)
+test2 = Fingerprinter(filepath="tmp/11k16bitpcm.wav", framewidth=0.37, overlap=0.1)
 test2.init_fingerprints()
-
+test2.print_info()
 
 
 #print test2.binary_distance([True, True, True], [False, True, False])
